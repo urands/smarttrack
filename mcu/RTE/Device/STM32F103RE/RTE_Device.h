@@ -970,7 +970,7 @@
 
 // <e> SPI3 (Serial Peripheral Interface 3) [Driver_SPI3]
 // <i> Configuration settings for Driver_SPI3 in component ::Drivers:SPI
-#define RTE_SPI3                        1
+#define RTE_SPI3                        0
 
 //   <e> SPI3_NSS Pin
 //   <i> Configure Pin if exists

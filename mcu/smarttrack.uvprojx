@@ -558,11 +558,6 @@
               <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_adc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_spi.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_usart.c</FilePath>
@@ -657,7 +652,7 @@
         </targetInfos>
       </component>
       <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cvendor="ARM" Cversion="4.74.0" condition="CMSIS Core">
-        <package name="CMSIS" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="ARM" version="4.1.1"/>
+        <package name="CMSIS" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="ARM" version="3.20.4"/>
         <targetInfos>
           <targetInfo name="Debug"/>
         </targetInfos>
@@ -776,12 +771,6 @@
           <targetInfo name="Debug"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="SPI" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
       <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="TIM" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
         <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
         <targetInfos>
@@ -826,10 +815,10 @@
       </component>
     </components>
     <files>
-      <file attr="config" category="source" name="CMSIS_RTX\Templates\RTX_Conf_CM.c" version="4.70">
+      <file attr="config" category="source" name="CMSIS_RTX\Templates\RTX_Conf_CM.c" version="4.70.0">
         <instance index="0">RTE\CMSIS\RTX_Conf_CM.c</instance>
         <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cvendor="ARM" Cversion="4.74.0" condition="CMSIS Core"/>
-        <package name="CMSIS" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="ARM" version="4.1.1"/>
+        <package name="CMSIS" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="ARM" version="3.20.4"/>
         <targetInfos>
           <targetInfo name="Debug"/>
         </targetInfos>
