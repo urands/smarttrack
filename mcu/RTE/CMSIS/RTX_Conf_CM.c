@@ -108,7 +108,7 @@
 //   <i> Defines the timer clock value.
 //   <i> Default: 12000000  (12MHz)
 #ifndef OS_CLOCK
- #define OS_CLOCK       12000000
+ #define OS_CLOCK       8000000
 #endif
 
 //   <o>Timer tick value [us] <1-1000000>

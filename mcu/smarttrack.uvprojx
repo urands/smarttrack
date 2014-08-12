@@ -412,6 +412,21 @@
               <FileType>1</FileType>
               <FilePath>.\core\main.c</FilePath>
             </File>
+            <File>
+              <FileName>retarget.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\core\retarget.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gpio</GroupName>
+          <Files>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gpio\gpio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -180,7 +180,7 @@
 
 
 // <e> USART2 (Universal synchronous asynchronous receiver transmitter)
-#define RTE_USART2                      1
+#define RTE_USART2                      0
 
 //   <o> USART2_TX Pin <0=>PA2
 #define RTE_USART2_TX_PORT_ID_DEF       0
@@ -343,7 +343,7 @@
 
 
 // <e> USART3 (Universal synchronous asynchronous receiver transmitter)
-#define RTE_USART3                      1
+#define RTE_USART3                      0
 
 //   <o> USART3_TX Pin <0=>PB10
 #define RTE_USART3_TX_PORT_ID_DEF       0
@@ -894,7 +894,7 @@
 
 // <e> SPI2 (Serial Peripheral Interface 2) [Driver_SPI2]
 // <i> Configuration settings for Driver_SPI2 in component ::Drivers:SPI
-#define RTE_SPI2                        1
+#define RTE_SPI2                        0
 
 //   <e> SPI2_NSS Pin
 //   <i> Configure Pin if exists
@@ -1546,7 +1546,7 @@
 
 
 // <e> USB OTG Full-speed
-#define RTE_USB_OTG_FS                  1
+#define RTE_USB_OTG_FS                  0
 
 //   <e> Device [Driver_USBD0]
 //   <i> Configuration settings for Driver_USBD0 in component ::Drivers:USB Device

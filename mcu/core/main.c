@@ -3,24 +3,31 @@
 #include <stdio.h>
 #include <stm32f10x.h>
 
+
 #include "cmsis_os.h"		/* RTL OS declaration*/
 
-struct __FILE { int handle; };
-FILE __stdout;
-FILE __stdin;
+#include "../gpio/gpio.h"
 
-int fputc(int c, FILE *f)
-{
-	ITM_SendChar(c);
-	//c=c+1;
-	return (c);
-}
 
 
 void init (void const *argument){
 
+	
+	
+	osDelay(1000); //dly 1 sec
+	
+	
+	ctrlSwitchGSMPwrKey();
+	
 	while(1){
-	  printf("Start SMARTTRACKER programm from task\n");
+		
+	//	GPIOC->BSRR = GPIO_BSRR_BR2;
+	  //GPIO_PinWrite( GPIOC, pinGSM_PWRKEY, 0 );
+	//	GPIO_SetBits(GPIOC, GPIO_Pin_2);
+		//osDelay(100);
+		//GPIOC->BSRR = GPIO_BSRR_BS2;
+		 //GPIO_ResetBits(GPIOC, GPIO_Pin_2);
+		//GPIO_PinWrite( GPIOC, pinGSM_PWRKEY, 1 );
 		osDelay(100);
 	}	 
 	 
@@ -30,6 +37,10 @@ void init (void const *argument){
 
 
 int main(void){
+	
+	gpioInit();
+	
+	
 	
 	osKernelInitialize();
 	
