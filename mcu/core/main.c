@@ -7,6 +7,7 @@
 #include "cmsis_os.h"		/* RTL OS declaration*/
 
 #include "../gpio/gpio.h"
+#include "../gpio/ctrl.h"
 
 
 
@@ -17,17 +18,13 @@ void init (void const *argument){
 	osDelay(1000); //dly 1 sec
 	
 	
-	ctrlSwitchGSMPwrKey();
+	
 	
 	while(1){
-		
-	//	GPIOC->BSRR = GPIO_BSRR_BR2;
-	  //GPIO_PinWrite( GPIOC, pinGSM_PWRKEY, 0 );
-	//	GPIO_SetBits(GPIOC, GPIO_Pin_2);
-		//osDelay(100);
-		//GPIOC->BSRR = GPIO_BSRR_BS2;
-		 //GPIO_ResetBits(GPIOC, GPIO_Pin_2);
-		//GPIO_PinWrite( GPIOC, pinGSM_PWRKEY, 1 );
+
+		ctrlGSM_PWRKEY(1);
+		osDelay(100);
+		ctrlGSM_PWRKEY(0);
 		osDelay(100);
 	}	 
 	 
@@ -55,7 +52,7 @@ int main(void){
 	}
 	
 
-	return 0;
+//	return 0;
 }
 
 

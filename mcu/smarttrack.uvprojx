@@ -427,6 +427,11 @@
               <FileType>1</FileType>
               <FilePath>.\gpio\gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gpio\ctrl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
