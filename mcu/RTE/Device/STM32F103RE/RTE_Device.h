@@ -180,7 +180,7 @@
 
 
 // <e> USART2 (Universal synchronous asynchronous receiver transmitter)
-#define RTE_USART2                      0
+#define RTE_USART2                      1
 
 //   <o> USART2_TX Pin <0=>PA2
 #define RTE_USART2_TX_PORT_ID_DEF       0

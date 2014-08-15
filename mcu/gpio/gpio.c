@@ -12,7 +12,31 @@
 void gpioInit( void ){
 	
     GPIO_InitTypeDef port;
+	
+		GPIO_InitTypeDef GPIO_InitStructure;
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	
+		RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2,ENABLE);
+
+     //Set USART2 Tx (PA2) as AF push-pull
+
+     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+
+     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+
+     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+     GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+     //Set USART2 Rx (PA3) as input floating
+
+     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+
+     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+
+     GPIO_Init(GPIOA, &GPIO_InitStructure);
+
 	
 		//GSM_PWRKEY init
     //GPIO_StructInit(&port);
