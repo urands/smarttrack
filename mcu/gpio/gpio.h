@@ -25,4 +25,7 @@
 void gpioInit( void );
 
 
+void ctrlGSM_PWRKEY(int state);
+
+
 #endif

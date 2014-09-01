@@ -36,7 +36,7 @@
 //   <o> APB1 Clock   <1-999999999>
 #define RTE_PCLK1                       36000000
 //   <o> APB2 Clock   <1-999999999>
-#define RTE_PCLK2                       72000000
+#define RTE_PCLK2                       36000000
 //   <o> ADC Clock    <1-999999999>
 #define RTE_ADCCLK                      36000000
 //       USB Clock
@@ -149,7 +149,7 @@
 //     <e> Hardware flow control
 //       <o1.0> Manual CTS/RTS
 //     </e>
-#define RTE_USART1_HW_FLOW              1
+#define RTE_USART1_HW_FLOW              0
 #define RTE_USART1_MANUAL_FLOW          0
 
 //   <e> DMA Rx

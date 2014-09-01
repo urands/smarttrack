@@ -4,20 +4,22 @@
 #include <stm32f10x.h>
 #include <stm32f10x_usart.h>
 
-#include "Driver_UART.h"
-
-
 #include "cmsis_os.h"		/* RTL OS declaration*/
 
 #include "../gpio/gpio.h"
-#include "../gpio/ctrl.h"
+ #include "../gsm/inc/gsm-task.h"
+ #include "../gps/inc/gps-task.h"
+ 
+ #include "../hal/at_serial.h"
+//#include "../gpio/ctrl.h"
 
-extern ARM_DRIVER_UART Driver_UART2;
+
 
 
 void Usart2_Send_symbol(uint8_t data)
 {
-  Driver_UART2.WriteData(&data,1);
+//  Driver_UART2.WriteData(&data,1);
+	SER_wait_transmite();
 }
 
 void Usart2_Send_String(char* str)
@@ -26,79 +28,133 @@ void Usart2_Send_String(char* str)
   while(str[i])
   {
     Usart2_Send_symbol(str[i]);
+			SER_wait_transmite();
     i++;
   }
-  Usart2_Send_symbol('\n');
   Usart2_Send_symbol('\r');
 }
 
 
+void send_Uart(USART_TypeDef* USARTx, unsigned char c) // ????????? ????
+{
+	Usart2_Send_symbol(c);
+	return;
+	while(USART_GetFlagStatus(USARTx, USART_FLAG_TXE)== RESET){}
+	USART_SendData(USARTx, c);
+}
+ 
+unsigned char getch_Uart(USART_TypeDef* USARTx)  //  ???????? ????
+{
+	char c = 0;
+//	if ( Driver_UART2.DataAvailable() )		Driver_UART2.WriteData(&c,1) ;
+	return c;
+	
+	if (USART_GetFlagStatus(USARTx,USART_FLAG_RXNE) == RESET){
+		return USART_ReceiveData(USARTx);
+	}else{
+		return 0;
+	}
+}
+
+
+
 void init (void const *argument){
 	char c;
+	char buff[255];
+	int read;
 	int32_t av = 0;
+	int it = 0;
 	USART_InitTypeDef    USART_InitStruct;
-	   USART_InitTypeDef USART_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+
 	
 	
+/*
 	osDelay(1000); //dly 1 sec
   ctrlGSM_PWRKEY(1);
-	osDelay(2000);
+	osDelay(1000);
 	ctrlGSM_PWRKEY(0);
-	osDelay(100);
+	osDelay(1000);
+	*/
+//	atSerUnitTest();
+	nmeaSerUnitTest();
 	
 	
-	  
+	return;
+	
 
+	/*
+	
+	USART_InitStructure.USART_BaudRate = 9600;
+  USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+  USART_InitStructure.USART_StopBits = USART_StopBits_1;
+  USART_InitStructure.USART_Parity = USART_Parity_No ;
+  USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+  USART_Init(USART2, &USART_InitStructure);
+	USART_Cmd(USART2, ENABLE);
+	
+	USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
+  USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
+*/
+	
+	//GSM_establish_connection();
+	
+	//return;
 
-
-
-     //enable bus clocks
-
- 
-     USART_InitStructure.USART_BaudRate = 9600;
-
-     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-
-     USART_InitStructure.USART_StopBits = USART_StopBits_1;
-
-     USART_InitStructure.USART_Parity = USART_Parity_No ;
-
-     USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-
-
-
-    USART_Init(USART2, &USART_InitStructure);
-		
-		USART_Cmd(USART2, ENABLE);
-
-    //Enable USART2
-		
-		Driver_UART2.Initialize(NULL, 0); Driver_UART2.PowerControl(ARM_POWER_FULL);
-		Driver_UART2.Configure(9600, 8, ARM_UART_PARITY_NONE, ARM_UART_STOP_BITS_1, ARM_UART_FLOW_CONTROL_NONE);
-
-
+	send_Uart(USART2,0x0 );
+	send_Uart(USART2,0x49 );
+	send_Uart(USART2,0x49 );
+	send_Uart(USART2,0x49 );
+	send_Uart(USART2,0x49 );
+	send_Uart(USART2,0xFF );
+	send_Uart(USART2,0xFF );
+	send_Uart(USART2,0xFF );
+	send_Uart(USART2,0xFF );
 
 
 
 	while(1){
-			Usart2_Send_String("AT");
-//			c = 'A';
-//			USART_SendData(USART2, 'A');
-//		 Driver_UART2.WriteData(&c,1);
-		
-		while (c = Driver_UART2.DataAvailable()){
-			Driver_UART2.ReadData(&c,1);
+			send_Uart(USART2,'A' );
+			send_Uart(USART2,'T' );
+			send_Uart(USART2,'\r' );
+			//Usart2_Send_String("AT");
+		c = 0;
+		//	USART_SendData(USART2, 'A');
+		// Driver_UART2.WriteData(&c,1);
+		  osDelay(1000);
+		c = getch_Uart(USART2);
+		it = 0;
+		if (c!=0 ) buff[it++] = c;
+		while( c!= 0){
+				c = getch_Uart(USART2);
+				buff[0] = c;
+			it++;
 		}
 		
+		if (it > 0 ){
+			it = buff[0];
+			it = 0;
+		}
+
+/*		
+		while (c = Driver_UART2.DataAvailable()){
+			read = Driver_UART2.ReadData(buff,255);
+			buff[read+1] = 0;
+		//	printf("read=%i %s",read, buff);
+		}
+	*/	
 		
 		
 		osDelay(200);
 	};
-	 
+ 
  }
 
  osThreadDef(init,osPriorityNormal,1,0);
+ 
+ osThreadDef(gsm_thread,osPriorityNormal,1,0);
+ osThreadDef(gps_thread,osPriorityNormal,1,0);
 
 
 int main(void){
@@ -109,10 +165,13 @@ int main(void){
 	
 	osKernelInitialize();
 	
-	osThreadCreate(osThread(init),0);
+	osThreadCreate(osThread(gps_thread),0);
+	osThreadCreate(osThread(gsm_thread),0);
 //	printf("Start SMARTTRACKER programm\n");
 	
 	osKernelStart();
+	
+	
 	
 	
 	while(1){

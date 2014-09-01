@@ -417,6 +417,16 @@
               <FileType>1</FileType>
               <FilePath>.\core\retarget.c</FilePath>
             </File>
+            <File>
+              <FileName>toolset.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\core\toolset.c</FilePath>
+            </File>
+            <File>
+              <FileName>legacy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\core\legacy.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -427,10 +437,65 @@
               <FileType>1</FileType>
               <FilePath>.\gpio\gpio.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gsm</GroupName>
+          <Files>
             <File>
-              <FileName>ctrl.c</FileName>
+              <FileName>gsm-control.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\gpio\ctrl.c</FilePath>
+              <FilePath>.\gsm\gsm-control.c</FilePath>
+            </File>
+            <File>
+              <FileName>gsm-task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gsm\gsm-task.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>interface</GroupName>
+          <Files>
+            <File>
+              <FileName>buffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interface\buffer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hal</GroupName>
+          <Files>
+            <File>
+              <FileName>nmea_serial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hal\nmea_serial.c</FilePath>
+            </File>
+            <File>
+              <FileName>at_serial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hal\at_serial.c</FilePath>
+            </File>
+            <File>
+              <FileName>at_proto.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hal\at_proto.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gps</GroupName>
+          <Files>
+            <File>
+              <FileName>gps-control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gps\gps-control.c</FilePath>
+            </File>
+            <File>
+              <FileName>gps-task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gps\gps-task.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -463,59 +528,9 @@
               <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\misc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_bkp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_bkp.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_can.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_cec.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_cec.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_crc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_dbgmcu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_dbgmcu.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_exti.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_flash.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_iwdg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_pwr.c</FileName>
@@ -526,21 +541,6 @@
               <FileName>stm32f10x_rcc.c</FileName>
               <FileType>1</FileType>
               <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_rcc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_tim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_tim.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_wwdg.c</FilePath>
             </File>
             <File>
               <FileName>DMA_STM32F10x.c</FileName>
@@ -572,31 +572,11 @@
               <FileType>1</FileType>
               <FilePath>RTE\Device\STM32F103RE\system_stm32f10x.c</FilePath>
             </File>
-            <File>
-              <FileName>stm32f10x_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_usart.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>::Drivers</GroupName>
           <Files>
-            <File>
-              <FileName>I2C_STM32F10x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\RTE_Driver\I2C_STM32F10x.c</FilePath>
-            </File>
-            <File>
-              <FileName>SPI_STM32F10x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\RTE_Driver\SPI_STM32F10x.c</FilePath>
-            </File>
             <File>
               <FileName>UART_STM32F10x.c</FileName>
               <FileType>1</FileType>
@@ -633,25 +613,7 @@
           <targetInfo name="Debug"/>
         </targetInfos>
       </api>
-      <api Capiversion="1.10" Cclass="Drivers" Cgroup="I2C" exclusive="0">
-        <package name="CMSIS" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="ARM" version="3.20.4"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </api>
-      <api Capiversion="1.10" Cclass="Drivers" Cgroup="SPI" exclusive="0">
-        <package name="CMSIS" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="ARM" version="3.20.4"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </api>
       <api Capiversion="1.10" Cclass="Drivers" Cgroup="UART" exclusive="0">
-        <package name="CMSIS" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="ARM" version="3.20.4"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </api>
-      <api Capiversion="1.10" Cclass="Drivers" Cgroup="USB Host" exclusive="0">
         <package name="CMSIS" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="ARM" version="3.20.4"/>
         <targetInfos>
           <targetInfo name="Debug"/>
@@ -695,66 +657,6 @@
           <targetInfo name="Debug"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="ADC" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="BKP" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="CAN" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="CEC" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="CRC" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="DAC" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="DBGMCU" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="DMA" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="EXTI" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="Flash" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
       <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="Framework" Cvendor="Keil" Cversion="3.5.1" condition="STM32F1 STDPERIPH">
         <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
         <targetInfos>
@@ -762,12 +664,6 @@
         </targetInfos>
       </component>
       <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="GPIO" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="IWDG" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
         <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
         <targetInfos>
           <targetInfo name="Debug"/>
@@ -785,49 +681,7 @@
           <targetInfo name="Debug"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="RTC" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="TIM" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="USART" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="WWDG" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Drivers" Cgroup="I2C" Cvendor="Keil" Cversion="1.01.0" condition="STM32F1xx CMSIS RTOS GPIO DMA">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Drivers" Cgroup="SPI" Cvendor="Keil" Cversion="1.03.0" condition="STM32F1xx CMSIS RTOS GPIO DMA">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
       <component Cclass="Drivers" Cgroup="UART" Cvendor="Keil" Cversion="1.01.0" condition="STM32F1xx CMSIS RTOS GPIO DMA">
-        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
-        <targetInfos>
-          <targetInfo name="Debug"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Drivers" Cgroup="USB Host" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS RTOS GPIO">
         <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
         <targetInfos>
           <targetInfo name="Debug"/>

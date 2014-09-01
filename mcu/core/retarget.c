@@ -17,6 +17,6 @@ FILE __stdin;
 int fputc(int c, FILE *f)
 {
 	//TODO: retarget to USB connections
-	ITM_SendChar(c); //Use trace SVO
+	//ITM_SendChar(c); //Use trace SVO
 	return (c);
 }
