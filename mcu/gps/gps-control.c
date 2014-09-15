@@ -100,13 +100,18 @@ int GGPS_GPRMC(char *string ){
   	GGPS_RdDat( string );
   	GGPS_param(string, cmd, 0);
 	if (strlen(string) >= GPS_MAX_LINE_SIZE ) return 0;
-	if ( strcmp("$GPGGA", cmd) == 0 ) {
+	if ( strcmp("$GPGGA", cmd) == 0 || strcmp("$GNGGA", cmd) == 0 ) {
 	   if (GGPS_param(string, g_gps_sat_number, 7)==0) strcpy(g_gps_sat_number, "0");
 	   if (GGPS_param(string, g_gps_height, 9) == 0)   strcpy(g_gps_height, "0");
 	   if (GGPS_param(string, g_gps_hdop, 8) == 0)   strcpy(g_gps_hdop, "0");
 	}
 
-  	if ( strcmp("$GPRMC", cmd) == 0 ) break;
+  	if ( strcmp("$GPRMC", cmd) == 0 || strcmp("$GNRMC", cmd) == 0) break; 
+	
+	
+	if ( strcmp("$GNGSV", cmd) == 0 || strcmp("$GPGSV", cmd) == 0) {
+		cmd[0]=0;
+	}
   }
   return 1;
 }

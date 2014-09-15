@@ -38,6 +38,19 @@ unsigned int nmeaSerRead(char* buffer, unsigned int size, const unsigned int tim
 unsigned int nmeaSerReadLine(char* buffer, unsigned int size, const unsigned int timeout );
 
 
+/*
+* Reader response binary
+* return: size response data
+*/
+unsigned int nmeaSerReadData(char* buffer, unsigned int size, const unsigned int timeout );
+
+/*
+* Test Checksum
+* return: size response data
+*/
+unsigned int nmeaCheckSum(char* buffer, unsigned int size );
+
+
 #ifndef __RELEASE__
 /* Unit test */
 void nmeaSerUnitTest( void );

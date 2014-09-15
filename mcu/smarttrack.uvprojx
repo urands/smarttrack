@@ -437,6 +437,11 @@
               <FileType>1</FileType>
               <FilePath>.\gpio\gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gpio\adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -461,6 +466,16 @@
               <FileName>buffer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\interface\buffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>bufmsg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interface\bufmsg.c</FilePath>
+            </File>
+            <File>
+              <FileName>manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interface\manager.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -496,6 +511,16 @@
               <FileName>gps-task.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\gps\gps-task.c</FilePath>
+            </File>
+            <File>
+              <FileName>nmea_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gps\nmea_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>nmea_proto.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gps\nmea_proto.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -571,6 +596,11 @@
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
               <FilePath>RTE\Device\STM32F103RE\system_stm32f10x.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\StdPeriph_Driver\src\stm32f10x_adc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -652,6 +682,12 @@
         </targetInfos>
       </component>
       <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS Device">
+        <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
+        <targetInfos>
+          <targetInfo name="Debug"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="ADC" Cvendor="Keil" Cversion="3.5.0" condition="STM32F1 STDPERIPH RCC">
         <package name="STM32F1xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.5"/>
         <targetInfos>
           <targetInfo name="Debug"/>

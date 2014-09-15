@@ -272,7 +272,7 @@ void os_error (uint32_t error_code) {
     case OS_ERROR_STACK_OVF:
       /* Stack overflow detected for the currently running task. */
       /* Thread can be identified by calling svcThreadGetId().   */
-			printf("stack overflocv\n");
+	//		printf("stack overflocv\n");
       break;
     case OS_ERROR_FIFO_OVF:
       /* ISR FIFO Queue buffer overflow detected. */

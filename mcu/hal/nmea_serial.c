@@ -6,13 +6,13 @@
 *  History:
 *				12.08.14 create
 */
-
-#include "at_serial.h"
 #include "Driver_UART.h"
 #include "cmsis_os.h"		/* RTL OS declaration*/
 #include <stm32f10x.h>
 #include "GPIO_STM32F10x.h"
 #include "nmea_serial.h"
+#include <string.h>
+#include <stdio.h>
 
 extern ARM_DRIVER_UART Driver_UART1;
 
@@ -129,9 +129,11 @@ unsigned int nmeaSerReadLine(char* buffer, unsigned int size, const unsigned int
 			return it;
 		}
 		
-		if ( buffer[it] == '\n' && it != 0 ){
-			if (it < size ) buffer[it+1] = 0;
-			return it;
+		if ( it > 1 && buffer[it] == '\n' ){
+			if ( buffer[it - 1] == '\r' ){
+				if (it < size ) buffer[it+1] = 0;
+				return it + 1;
+			}
 		}
 
 		
@@ -147,6 +149,41 @@ unsigned int nmeaSerReadLine(char* buffer, unsigned int size, const unsigned int
 
 	}
 	return it;
+}
+
+
+
+unsigned int nmeaSerReadData(char* buffer, unsigned int size, const unsigned int timeout ){
+		size = nmeaSerReadLine(buffer, size, timeout );
+		if ( size > 0 ) {
+			if ( nmeaCheckSum(buffer, size) ){
+				return size;
+			}
+		}
+		return 0;
+}
+
+
+
+unsigned int nmeaCheckSum(char* buffer, unsigned int size ){
+ unsigned int i, len, rcrc, crc = 0;
+	len = strlen(buffer);
+	if ( len > size ) len = size;
+	if (buffer[0] == '$'){
+			for( i = 1; i< len ;++i ){
+				if (buffer[i] != '*' ){
+					crc^= buffer[i];
+				}else{
+					break;
+			}
+		}
+		if ( len - i == 5 ){
+			i++;
+			sscanf(buffer+i,"%x",&rcrc);
+			if ( rcrc == crc) return crc;
+		}
+  }
+	return 0;
 }
 
 
@@ -188,7 +225,7 @@ void nmeaSerUnitTest(){
 	//	sz = nmeaSerWrite("AT+IFC?\r",8,1000);
 		sz = nmeaSerReadLine(buf,255,500);
 		//osDelay(1000);	
-		test(sz);
+//		test(sz);
 		
 //		sz = nmeaSerRead(buf,128,1000);
 //		osDelay(1000);	

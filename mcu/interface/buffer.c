@@ -96,6 +96,8 @@ int gps_write_to_buffer(char* gps_line){
 
 //	ptr_pack = _alloc_box (mpool); 
 	ptr_pack = osPoolAlloc(mpool); 	
+	
+	if ( ptr_pack == 0) return 0;
 
 	if (GGPS_Pack_NMEA2(gps_line, ptr_pack ) == OK ){
 		/*
@@ -172,11 +174,11 @@ int GGPS_Unpack_Wialon2( GSM_Packet2* pack, char* w_msg){
 }
 //#D#date;time;lat1;lat2;lon1;lon2;speed;course;height;sats;hdop;inputs;outputs;adc;ibutton;params\r\n
 int GGPS_Unpack_Wialon2_full( GSM_Packet2* pack, char* w_msg){
-//   t_accel_out accel;
+  // t_accel_out accel;
 
  //  get_accel(&accel);
 
- /*  sprintf(w_msg,"#D#%06i;%06i;%04i.%04i;%c;%05i.%04i;%c;%i;%i;%i;%i;%f;NA;NA;;NA;ANG:2:%f,AMP:2:%f,CSQ:1:%i",
+   sprintf(w_msg,"#D#%06i;%06i;%04i.%04i;%c;%05i.%04i;%c;%i;%i;%i;%i;%f;NA;NA;;NA;ANG:2:%f,AMP:2:%f,CSQ:1:%i",
    	pack->date,
 	pack->time,
 	pack->longitude_h,
@@ -190,14 +192,16 @@ int GGPS_Unpack_Wialon2_full( GSM_Packet2* pack, char* w_msg){
 	pack->height,
 	pack->sat,
 	pack->hdop,
-		
+	1,
+	1,
+	1	
 	//CSQ param
 //	accel.Ang,
 //	accel.Amp,
 //	g_gsm_param.csq
 	
    );
-	*/
+	
    return OK;
 }
 
@@ -216,14 +220,14 @@ int GGPS_Pack_NMEA2(char* nmea_rmc_msg, GSM_Packet2* pk){
    int i;
 	 int value;
    float speed;
- //  if (GGPS_param(nmea_rmc_msg, param, 9 ) == 0 ) return NOT;
+   if (GGPS_param(nmea_rmc_msg, param, 9 ) == 0 ) return NOT;
    pparam = param;  while(*pparam == '0') pparam++;
    if (*pparam == 0) pk->date = 0; else sscanf(pparam, "%i", &pk->date);
-//   if (GGPS_param(nmea_rmc_msg, param, 1 ) == 0 ) return  NOT;
+   if (GGPS_param(nmea_rmc_msg, param, 1 ) == 0 ) return  NOT;
    pparam = param;  while(*pparam == '0') pparam++;
    if (*pparam == 0) pk->time = 0; else sscanf(pparam, "%i", &pk->time);
 
- //  if (GGPS_param(nmea_rmc_msg, param, 3 ) == 0 ) return  NOT;
+   if (GGPS_param(nmea_rmc_msg, param, 3 ) == 0 ) return  NOT;
    for (i=0;i<strlen(param);++i) 
   	if (param[i]=='.') {   
 		pparam =  param+i+1;  while(*pparam == '0') pparam++;
@@ -234,11 +238,11 @@ int GGPS_Pack_NMEA2(char* nmea_rmc_msg, GSM_Packet2* pk){
 		if (*pparam == 0) value = 0; else  sscanf(pparam, "%i",(int*) &value);
 		pk->longitude_h = (uint16_t) value;
    } 
-//   if (GGPS_param(nmea_rmc_msg, param, 4 ) == 0 ) return  NOT;
+   if (GGPS_param(nmea_rmc_msg, param, 4 ) == 0 ) return  NOT;
    pk->longitude_d = param[0];
 
 
-//   if (GGPS_param(nmea_rmc_msg, param, 5 ) == 0 ) return  NOT;
+   if (GGPS_param(nmea_rmc_msg, param, 5 ) == 0 ) return  NOT;
    for (i=0;i<strlen(param);++i) if (param[i]=='.') {   
    			pparam =  param+i+1;  while(*pparam == '0') pparam++;
 			if (*pparam == 0) value = 0; else sscanf(pparam, "%i",(int*) &value);
@@ -249,7 +253,7 @@ int GGPS_Pack_NMEA2(char* nmea_rmc_msg, GSM_Packet2* pk){
 	  	    pk->lotitude_h = (uint16_t) value;
    } 
 
-//   if (GGPS_param(nmea_rmc_msg, param, 6 ) == 0 ) return  NOT;
+   if (GGPS_param(nmea_rmc_msg, param, 6 ) == 0 ) return  NOT;
    pk->lotitude_d = param[0];
 
    //Speed
@@ -264,14 +268,14 @@ int GGPS_Pack_NMEA2(char* nmea_rmc_msg, GSM_Packet2* pk){
 	}
    //Course
    pk->course = 0;
- //  if (GGPS_param(nmea_rmc_msg, param, 8 ) == 0 ){
+   if (GGPS_param(nmea_rmc_msg, param, 8 ) == 0 ){
 	  pk->course = 0;
 	  return NOT;
-//   }else{
+   }else{
 	   	for (i=0;i<strlen(param);++i) if (param[i]=='.') { param[i] = 0; break;} 
 		sscanf(param, "%i", (int*)&value);
 		pk->course  = value;
-//	}
+	}
    for (i=0;i<strlen(g_gps_height);++i) if (g_gps_height[i]=='.') { g_gps_height[i] = 0; break;} 
    sscanf(g_gps_height, "%i", (int*)&value); 	
 	 pk->height = (uint16_t) value;

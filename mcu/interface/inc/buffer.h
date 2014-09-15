@@ -16,12 +16,12 @@
 #ifdef FLASH 
  #define GSM_BUF_MAX_COUNT 1
 #else
- #define GSM_BUF_MAX_COUNT 3
+ #define GSM_BUF_MAX_COUNT 5
 #endif
 /*
 	Buffer header
 */
-typedef struct GSM_Packet2{
+typedef struct {
   uint32_t date;
   uint32_t time;
   uint16_t longitude_h;

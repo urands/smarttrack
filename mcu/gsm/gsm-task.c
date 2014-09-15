@@ -107,7 +107,7 @@ void gsm_thread (void){
 										  //GPRS_update_parameters(&g_gsm_param);
 											GSM_update_sms();
 											SER_read_nb(gsm_str);
-											if ( gps_read_from_buffer(gsm_str) == OK ){
+											if ( 0 ) { //(gps_read_from_buffer(gsm_str) == OK ){
 												//	os_mut_wait (m_write_gsm, 0xffff);
 												//	os_evt_clr (0x1, t_gsm_thread);
 												//	os_mut_release (m_write_gsm);
