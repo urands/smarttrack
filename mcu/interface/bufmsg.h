@@ -2,7 +2,7 @@
 #define __BUFMSG_H__
 
 
-#define BUFMSG_MAX_BUF 3
+#define BUFMSG_MAX_BUF 50
 #define BUFMSG_MAX_DATA 255
 
 

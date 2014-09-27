@@ -47,6 +47,20 @@ typedef enum
 	AT_CMS_ERROR = 3,
 	AT_TIMEOUT = 4,
 	AT_ERROR = 5,
+	AT_ABNORMAL = 6,
+	
+	AT_STATE_IP_INIT,
+	AT_STATE_IP_START,
+	AT_STATE_IP_CONFIG,
+	AT_STATE_IP_GPRSACT,
+	AT_STATE_IP_STATUS,
+	AT_STATE_IP_TCP_CONNECTING,
+	AT_STATE_IP_CONNECT,
+	AT_STATE_IP_TCP_CLOSING,
+	AT_STATE_IP_TCP_CLOSED,
+	AT_STATE_IP_PDP_DEACT
+	
+	
 } AT_RESPONSE;
 
 /*
@@ -68,7 +82,7 @@ AT_RESPONSE atReponse(char* response, unsigned int* psize, const unsigned int ti
 
 /* AT API (level 2)*/
 
-
+AT_RESPONSE atExchange(const char* cmd, char* response, unsigned int* psize, const unsigned int timeout);
 
 /* AT API (level 3)*/
 
@@ -78,13 +92,19 @@ AT_RESPONSE atReponse(char* response, unsigned int* psize, const unsigned int ti
 * Using: atExtTest("+FTPEXTPUT");
 * return true if command exists and response if exists
 */
-AT_RESPONSE atExtTest(const char* cmd, char* response );
+AT_RESPONSE atExtTest(const char* cmd, char* response, unsigned int size, const unsigned int timeout);
 
-AT_RESPONSE atExtRead(const char* cmd, unsigned int* psize, char* response );
+AT_RESPONSE atExtRead(const char* cmd, char* response,unsigned int size, const unsigned int timeout);
 
-AT_RESPONSE atExtWrite(const char* cmd, const char* value, unsigned int* psize, char* response );
+AT_RESPONSE atExtWrite(const char* cmd, const char* value, const unsigned int timeout);
 
-AT_RESPONSE atExtExec(const char* cmd, const char* value, char* response );
+AT_RESPONSE atExtExec(const char* cmd, char* response, unsigned int size, const unsigned int timeout);
+
+
+
+AT_RESPONSE atSend(char* data, unsigned int size, const unsigned int timeout);
+
+AT_RESPONSE atRecv(char* data, unsigned int* size, const unsigned int timeout);
 
 
 

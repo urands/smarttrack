@@ -31,6 +31,19 @@ unsigned int atSerWrite(char* buffer, unsigned int size, const unsigned int time
 unsigned int atSerRead(char* buffer, unsigned int size, const unsigned int timeout );
 
 
+unsigned int  atSerRecvLine(char* buffer, unsigned int size, const unsigned int timeout);
+
+
+/*
+* Reader response binary
+* return: size response data
+*/
+unsigned int atSerFlushRx( void );
+
+
+unsigned int atSerReponse(char* response, unsigned int size, const unsigned int timeout);
+
+
 #ifndef __RELEASE__
 /* Unit test */
 void atSerUnitTest( void );

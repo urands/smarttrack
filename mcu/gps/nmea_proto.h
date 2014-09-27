@@ -8,6 +8,7 @@ typedef struct{
 	/* Date and time in UTC format */
 	unsigned int time;
 	char				 date[7];
+	char				 times[7];
 	/* Indicators:
 	*	 0 bit: 0-N=north, 1-S=south
 	*	 1 bit: 0-E=east, 1-W=west
@@ -107,7 +108,7 @@ int nmeaRecvData(T_NMEA_PACKED* data, unsigned int timeout );
 /* Get param wrom nmeamsg
 *  return 0 or sizeof param string
 */
-int nmeaToWialon(char* wialonmsg, char* nmeamsg, unsigned char size );
+int nmeaToWialon(char* wialonmsg, T_NMEA_PACKED* nmeamsg);
 
 
 #endif

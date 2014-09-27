@@ -135,10 +135,6 @@ unsigned int nmeaSerReadLine(char* buffer, unsigned int size, const unsigned int
 				return it + 1;
 			}
 		}
-
-		
-		
-		
 		if ( buffer[it] == '$' && it == 0 ){
 			it++;
 		}else{

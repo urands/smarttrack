@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stm32f10x.h>
 #include "cmsis_os.h"		/* RTL OS declaration*/
-
+/*
 struct __FILE { int handle; };
 FILE __stdout;
 FILE __stdin;
@@ -20,3 +20,4 @@ int fputc(int c, FILE *f)
 	//ITM_SendChar(c); //Use trace SVO
 	return (c);
 }
+*/

@@ -13,6 +13,8 @@ osPoolId nmeapool;
 osMessageQDef(MsgNmea, NMEAMSG_MAX_BUF, T_NMEA_PACKED); // Define message queue
 osMessageQId MsgNmea;
 
+osThreadId nmea_thread_id;
+
 
 /* Define low priority nmeaTask */
 osThreadDef(nmeaTask,osPriorityNormal,1,0);
@@ -25,7 +27,7 @@ void nmeaInit(void){
   nmeapool = osPoolCreate(osPool(nmeapool)); // create memory pool
 	MsgNmea = osMessageCreate(osMessageQ(MsgNmea), NULL); // create msg queue
 
-	osThreadCreate(osThread(nmeaTask),0);
+	nmea_thread_id = osThreadCreate(osThread(nmeaTask),0);
 }
 
 
@@ -37,11 +39,12 @@ void nmeaTask(void const *arg){
 	int  nmea_size = 0;
 	T_NMEA_PACKED nmeaPack;
 	enum nmeaSignals nmeaSig;
+	memset(&nmeaPack,0,sizeof(nmeaPack));
 	while( 1 ){
 			nmea_size = nmeaSerReadData(nmea_str,sizeof(nmea_str),1000);
 			if ( nmea_size > 0 ){
 				nmeaSig = nmeaUpdate( nmea_str, nmea_size, &nmeaPack);
-				if ( nmeaSig != nmeaNoValid ){
+				if ( nmeaSig == nmeaRMC ){
 						nmeaSendData( &nmeaPack, 1000);
 				}
 			}

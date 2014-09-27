@@ -310,7 +310,7 @@
 //     <e> Hardware flow control
 //       <o1.0> Manual CTS/RTS
 //     </e>
-#define RTE_USART2_HW_FLOW              0
+#define RTE_USART2_HW_FLOW              1
 #define RTE_USART2_MANUAL_FLOW          0
 
 //   <e> DMA Rx
@@ -771,7 +771,7 @@
 
 // <e> SPI1 (Serial Peripheral Interface 1) [Driver_SPI1]
 // <i> Configuration settings for Driver_SPI1 in component ::Drivers:SPI
-#define RTE_SPI1                        1
+#define RTE_SPI1                        0
 
 //   <e> SPI1_NSS Pin
 //   <i> Configure Pin if exists
@@ -894,7 +894,7 @@
 
 // <e> SPI2 (Serial Peripheral Interface 2) [Driver_SPI2]
 // <i> Configuration settings for Driver_SPI2 in component ::Drivers:SPI
-#define RTE_SPI2                        0
+#define RTE_SPI2                        1
 
 //   <e> SPI2_NSS Pin
 //   <i> Configure Pin if exists

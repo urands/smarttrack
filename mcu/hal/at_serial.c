@@ -15,8 +15,6 @@
 
 extern ARM_DRIVER_UART Driver_UART2;
 
-
-
 void test(int s){
 	
 	
@@ -118,6 +116,83 @@ unsigned int atSerRead(char* buffer, unsigned int size, const unsigned int timeo
 */
 	return i;
 }
+
+
+unsigned int  atSerRecvLine(char* buffer, unsigned int size, const unsigned int timeout){
+	int it = 0,time = 0;
+	while (time < timeout) {
+		while ( Driver_UART2.DataAvailable() == 0 ) {
+			osDelay(1);
+			time++;
+			if ( time >= timeout) break;
+		};
+		if (Driver_UART2.ReadData((uint8_t*)(buffer+it), 1) == 0){
+			return it;
+		}
+		
+		if ( it > 1 && buffer[it] == '\n' ){
+			if ( buffer[it - 1] == '\r' ){
+				if (it < size ) buffer[it+1] = 0;
+				return it + 1;
+			}
+		}
+		it++;
+
+		if ( it >= size ) return it;
+
+	}
+	return it;
+}
+
+
+
+
+unsigned int atSerReponse(char* buffer, unsigned int size, const unsigned int timeout){
+	int it = 0,time = 0;
+	while (time < timeout) {
+		while ( Driver_UART2.DataAvailable() == 0 ) {
+			osDelay(1);
+			time++;
+			if ( time >= timeout) break;
+		};
+		if (Driver_UART2.ReadData((uint8_t*)(buffer+it), 1) == 0){
+			return it;
+		}
+		
+		if ( it > 3 && buffer[it] == '\n' ){
+			if ( buffer[it - 1] == '\r' ){
+				if (it < size ) buffer[it+1] = 0;
+				return it + 1;
+			}
+		}
+		if ( it == 1 && buffer[it] != '\n' ) it = 0;
+		if ( buffer[it] == '\r' && it == 0 ){
+			it++;
+		}else{
+			
+			if ( it != 0 ) it++;
+			
+		}
+
+		if ( it >= size ) return it;
+
+	}
+	return it;
+	
+	
+	
+}
+
+
+/*
+* Reader response binary
+* return: size response data
+*/
+unsigned int atSerFlushRx( void ){
+	return Driver_UART2.FlushRxBuffer();;
+}
+
+
 
 
 #ifndef __RELEASE__

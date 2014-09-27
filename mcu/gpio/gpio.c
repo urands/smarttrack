@@ -33,6 +33,12 @@ void gpioInit( void ){
      GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
      GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
      GPIO_Init(GPIOA, &GPIO_InitStructure);
+		 
+		 
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+		GPIO_Init(GPIOC, &GPIO_InitStructure);
 
      //Set USART2 Rx (PA3) as input floating
 
@@ -98,7 +104,7 @@ void ctrlSwitchGSMPwrKey( void ){
 }
 
 
-void ctrlGSM_PWRKEY(int state){
+void ctrlGsmPowerKey(int state){
 	if ( state) GPIO_SetBits(GPIOC, GPIO_Pin_2);
 	else GPIO_ResetBits(GPIOC, GPIO_Pin_2);
 	// GPIO_PinWrite(GPIOC, pinGSM_PWRKEY, state);

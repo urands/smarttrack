@@ -65,6 +65,7 @@ enum nmeaSignals nmeaUpdate(char* nmeamsg, unsigned char size, T_NMEA_PACKED* nm
 		/* speed knots */
 		if ( nmeaGetParam(nmeastr, nmeamsg, size, 7 ) <= 0 ) return nmeaNoValid;
 		sscanf(nmeastr,"%f", &nmeadata->speedkn);
+		nmeadata->speedkm = nmeadata->speedkn * 1.852;
 			
 		/* course */
 		if ( nmeaGetParam(nmeastr, nmeamsg, size, 8 ) <= 0 ) return nmeaNoValid;
@@ -73,6 +74,7 @@ enum nmeaSignals nmeaUpdate(char* nmeamsg, unsigned char size, T_NMEA_PACKED* nm
 		/* timeconversion */
 		if ( nmeaGetParam(nmeastr, nmeamsg, size, 1 ) <= 0 ) return nmeaNoValid;
 		nmeadata->time = nmeaTimeStrToUTC(nmeastr);
+		memcpy(nmeadata->times, nmeastr, 6);
 
 		if ( nmeaGetParam(nmeastr, nmeamsg, size, 9 ) <= 0 ) return nmeaNoValid;
 		memcpy(nmeadata->date, nmeastr, 6);
@@ -125,6 +127,7 @@ enum nmeaSignals nmeaUpdate(char* nmeamsg, unsigned char size, T_NMEA_PACKED* nm
 		/* timeconversion */
 		if ( nmeaGetParam(nmeastr, nmeamsg, size, 1 ) <= 0 ) return nmeaNoValid;
 		nmeadata->time = nmeaTimeStrToUTC(nmeastr);
+		memcpy(nmeadata->times, nmeastr, 6);
 
 		return nmeaGGA;
 		
@@ -137,6 +140,7 @@ enum nmeaSignals nmeaUpdate(char* nmeamsg, unsigned char size, T_NMEA_PACKED* nm
 		if ( nmeaGetParam(nmeastr, nmeamsg, size, 2 ) <= 0 ) return nmeaNoValid;
 		if ( nmeastr[0] != 'T' )  return nmeaNoValid;
 		
+			
 		/* Data conversions */
 		if ( strcmp( "$GNVTG", nmeacmd) == 0 )   { nmeadata->indicators|= 0x4;} else {nmeadata->indicators&= ~0x4;}
 		
@@ -157,7 +161,7 @@ enum nmeaSignals nmeaUpdate(char* nmeamsg, unsigned char size, T_NMEA_PACKED* nm
 		if ( nmeastr[0] == 'D' ) { nmeadata->indicators|= 0x8;}else{ nmeadata->indicators&= ~0x8;}
 
 
-		return nmeaGGA;
+		return nmeaVTG;
 		
 		
 	}
@@ -191,8 +195,22 @@ unsigned long int nmeaTimeStrToUTC(const char* timestr){
 	return time;
 }
 
-int nmeaToWialon(char* wialonmsg, char* nmeamsg, unsigned char size ){
+int nmeaToWialon(char* wialonmsg, T_NMEA_PACKED* nmeamsg){
+	//"#D#160914;151022;5000.6025;N;03769.6834;E;10;100;250;3;8.5;05;6;12.25,78.54;DRIVERCODE;TEST:1:5,TEXT:3:Test text string"
 	
+	sprintf(wialonmsg,"#D#%s;%s;%09.4f;%c;%010.4f;%c;%d;%d;%d;%d;%03.2f;0;0;0,0;DCODE;TEST:1:5",
+		nmeamsg->date,
+		nmeamsg->times,
+		nmeamsg->latitude,
+		(nmeamsg->indicators&0x1)?'S':'N',
+		nmeamsg->longitude,
+		(nmeamsg->indicators&0x2)?'W':'E',
+		(int)nmeamsg->speedkm,
+		(int)nmeamsg->course,
+		(int)nmeamsg->altitude,
+		(int)nmeamsg->satelite,
+		nmeamsg->hdop
+	);
 	
 	return 0;
 }

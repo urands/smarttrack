@@ -6,13 +6,15 @@
 
 void adc_init (void){
 		ADC_InitTypeDef ADC_InitStructure;
+	
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
 			/* ADCCLK = PCLK2/8 */
 		RCC_ADCCLKConfig(RCC_PCLK2_Div8);
 
 		/* ADC1 configuration ------------------------------------------------------*/
 		ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
 		ADC_InitStructure.ADC_ScanConvMode = ENABLE;
-		ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
+		ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
 		ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
 		ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
 		ADC_InitStructure.ADC_NbrOfChannel = 1;

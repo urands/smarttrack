@@ -65,9 +65,9 @@ void gsm_thread (void){
 	 
 	
 	osDelay(1000); //dly 1 sec
-  ctrlGSM_PWRKEY(1);
+//  ctrlGSM_PWRKEY(1);
 	osDelay(2000);
-	ctrlGSM_PWRKEY(0);
+//	ctrlGSM_PWRKEY(0);
 	osDelay(1000);
 	
 		

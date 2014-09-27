@@ -17,7 +17,7 @@
 /* Wialon http://orange.gps-trace.com    */
 
 /*	Defaul settings */
-
+#ifdef WIALON_TRACKER		
 // Phonebook: Name: server Phone: 193193165166
 #define GSM_SERVER_IP 			"193.193.165.166"
 
@@ -29,6 +29,14 @@
 #define GSM_PHONE			"+79060795144"
 
 
+#else
+#define GSM_SERVER_IP 			"miss-n.ru"
+
+// Phonebook: Name: port Phone: 20332
+#define GSM_SERVER_PORT			80
+
+
+#endif
 
 /********************************************* DEVICE ****************************************************/
 
@@ -53,7 +61,7 @@
 #define GSM_SERVER_IMEI 		"001245789865" 
 //g_imei	
 
-typedef struct t_device_settings{
+typedef struct {
 	 char password[10];
 	 char server[15];
 	 char phone[15];
